@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelulusan Muhammad Rafa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .intro, .container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+
+    .intro {
+      display: flex;
+      background: radial-gradient(circle at center, #ffe3ec 0%, #ffc1dc 100%);
+    }
+
+    .intro h1 {
+      font-size: 2em;
+      animation: pulse 2s infinite;
+      color: #d63384;
+      margin-bottom: 30px;
+    }
+
+    .intro button {
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .intro button:hover {
+      transform: scale(1.1);
+      background-color: #ff85c1;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .container {
+      display: none;
+      background: linear-gradient(to right, #f8d0e1, #fadbd8);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      color: #ff69b4;
+      text-shadow: 1px 1px #fff;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #d63384;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .desc {
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 1.1em;
+      color: #5d3b6d;
+    }
+
+    .nilai {
+      font-size: 1.7em;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px 40px;
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.15);
+      margin: 20px;
+      color: #6c3483;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    button.lulus-btn {
+      padding: 12px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    button.lulus-btn:hover {
+      transform: scale(1.1);
+      background-color: #ff85c1;
+    }
+
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/3530/3530131.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: float linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-200px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Audio backsound -->
+  <audio id="backsound" src="s.mp3" loop></audio>
+
+  <div class="intro" id="intro">
+    <h1>Apakah kamu siap melihat hasil kelulusanmu,<br> <span class="highlight">Muhammad Rafa Hamizan Athaya</span>? ❤️</h1>
+    <button onclick="tampilkanKelulusan()">Lihat Hasil Kelulusan</button>
+  </div>
+
+  <div class="container" id="container">
+    <h1>🎓 Kamu LULUS! 🎓</h1>
+    <p class="desc">Selamat kepada <span class="highlight">Muhammad Rafa Hamizan Athaya</span> atas kelulusan dari kelas IX! 🌟<br>
+    Kamu telah menunjukkan kerja keras, semangat, dan dedikasi luar biasa selama belajar. Semoga masa depanmu lebih gemilang lagi!</p>
+    <div class="nilai">
+      Nilai Rata-rata: <strong>89.75</strong>
+    </div>
+    <div class="button-container">
+      <button class="lulus-btn" onclick="confetti()">🎉 Rayakan! 🎉</button>
+    </div>
+  </div>
+
+  <script>
+    function tampilkanKelulusan() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('container').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      // Mainkan musik
+      const audio = document.getElementById("backsound");
+      audio.play();
+
+      for (let i = 0; i < 200; i++) {
+        let flower = document.createElement('div');
+        flower.className = 'flower';
+        flower.style.left = Math.random() * window.innerWidth + 'px';
+        flower.style.top = Math.random() * window.innerHeight + 'px';
+        flower.style.animationDuration = (5 + Math.random() * 10) + 's';
+        flower.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(flower);
+      }
+    }
+
+    function confetti() {
+      alert("🎊 Kamu LULUS, Muhammad Rafa Hamizan Athaya! 🎊 Bangga banget sama kamu!");
+    }
+  </script>
+</body>
+</html>
